@@ -7,6 +7,7 @@ C:\Users\Yehor\Desktop\OOP-Rybonka\lab1v20\obj\Debug\net10.0\lab1v20.GeneratedMS
 C:\Users\Yehor\Desktop\OOP-Rybonka\lab1v20\obj\Debug\net10.0\lab1v20.AssemblyInfoInputs.cache
 C:\Users\Yehor\Desktop\OOP-Rybonka\lab1v20\obj\Debug\net10.0\lab1v20.AssemblyInfo.cs
 C:\Users\Yehor\Desktop\OOP-Rybonka\lab1v20\obj\Debug\net10.0\lab1v20.csproj.CoreCompileInputs.cache
+C:\Users\Yehor\Desktop\OOP-Rybonka\lab1v20\obj\Debug\net10.0\lab1v20.sourcelink.json
 C:\Users\Yehor\Desktop\OOP-Rybonka\lab1v20\obj\Debug\net10.0\lab1v20.dll
 C:\Users\Yehor\Desktop\OOP-Rybonka\lab1v20\obj\Debug\net10.0\refint\lab1v20.dll
 C:\Users\Yehor\Desktop\OOP-Rybonka\lab1v20\obj\Debug\net10.0\lab1v20.pdb
