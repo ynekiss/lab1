@@ -1,0 +1,102 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using lab7v20;
+using Xunit;
+
+namespace lab7v20.Tests
+{
+    public class InMemoryRepositoryTests
+    {
+        [Fact]
+        public void Add_ShouldAddItemToRepository()
+        {
+            var repo = new InMemoryRepository<Event>();
+            var ev = new Event { Id = 1, Name = "Test Event", Location = "City", EventDate = DateTime.Now };
+
+            repo.Add(ev);
+
+            var result = repo.GetById(1);
+            Assert.NotNull(result);
+            Assert.Equal("Test Event", result.Name);
+        }
+
+        [Fact]
+        public void GetById_ShouldReturnCorrectItem_WhenItemExists()
+        {
+            var repo = new InMemoryRepository<Event>();
+            repo.Add(new Event { Id = 1, Name = "Event 1", Location = "Loc 1", EventDate = DateTime.Now });
+
+            var item = repo.GetById(1);
+
+            Assert.NotNull(item);
+            Assert.Equal(1, item.Id);
+        }
+
+        [Fact]
+        public void GetById_ShouldReturnNull_WhenItemDoesNotExist()
+        {
+            var repo = new InMemoryRepository<Event>();
+
+            var item = repo.GetById(99);
+
+            Assert.Null(item);
+        }
+
+        [Fact]
+        public void GetAll_ShouldReturnAllItems()
+        {
+            var repo = new InMemoryRepository<Event>();
+            repo.Add(new Event { Id = 1, Name = "Event 1", Location = "Loc 1", EventDate = DateTime.Now });
+            repo.Add(new Event { Id = 2, Name = "Event 2", Location = "Loc 2", EventDate = DateTime.Now });
+
+            var items = repo.GetAll();
+
+            Assert.Equal(2, items.Count());
+        }
+
+        [Fact]
+        public void Update_ShouldUpdateExistingItem()
+        {
+            var repo = new InMemoryRepository<Event>();
+            var ev = new Event { Id = 1, Name = "Old Name", Location = "Old Loc", EventDate = DateTime.Now };
+            repo.Add(ev);
+
+            var updatedEv = new Event { Id = 1, Name = "New Name", Location = "New Loc", EventDate = DateTime.Now };
+            repo.Update(updatedEv);
+
+            var result = repo.GetById(1);
+            Assert.NotNull(result);
+            Assert.Equal("New Name", result.Name);
+            Assert.Equal("New Loc", result.Location);
+        }
+
+        [Fact]
+        public void Update_ShouldThrowException_WhenItemDoesNotExist()
+        {
+            var repo = new InMemoryRepository<Event>();
+            var ev = new Event { Id = 99, Name = "Non-existing", Location = "Loc", EventDate = DateTime.Now };
+
+            Assert.Throws<KeyNotFoundException>(() => repo.Update(ev));
+        }
+
+        [Fact]
+        public void Delete_ShouldRemoveItem()
+        {
+            var repo = new InMemoryRepository<Event>();
+            repo.Add(new Event { Id = 1, Name = "Event 1", Location = "Loc 1", EventDate = DateTime.Now });
+
+            repo.Delete(1);
+
+            Assert.Null(repo.GetById(1));
+        }
+
+        [Fact]
+        public void Delete_ShouldThrowException_WhenItemDoesNotExist()
+        {
+            var repo = new InMemoryRepository<Event>();
+
+            Assert.Throws<KeyNotFoundException>(() => repo.Delete(99));
+        }
+    }
+}
