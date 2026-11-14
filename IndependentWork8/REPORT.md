@@ -121,7 +121,6 @@ case MergeArrayHandling.Union:
 - методи `GetTags` / `Search` повертають **копію** множини. Інакше виклик `IntersectWith` у `FindCommonTags` зіпсував би дані всередині менеджера;
 - у `SearchMultiple` цикл зупиняється, щойно перетин став порожнім.
 
-Приклад виводу програми наведено в `README.md`.
 
 ---
 
@@ -186,7 +185,6 @@ tags.FindCommonTags("post-1", "post-2");   // {collections, csharp}
 index.SearchMultiple("c#", "java");        // [3]
 ```
 
-Повний вивід програми: `README.md`.
 
 ## Відповіді на контрольні запитання
 
